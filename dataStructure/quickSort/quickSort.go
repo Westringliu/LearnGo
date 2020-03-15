@@ -8,6 +8,8 @@ func quickSort(arr []int) []int {
 		return arr
 	} else {
 		splitdata := arr[0]
+		//make只能用于slice，map，chan，如mySlice2 := make([]int, 5, 10)
+		//创建一个初始元素长度为5的数组切片，元素初始值为0，并预留10个元素的存储空间：
 		low := make([]int, 0, 0)
 		high := make([]int, 0, 0)
 		mid := make([]int, 0, 0)
@@ -26,7 +28,6 @@ func quickSort(arr []int) []int {
 		myarr := append(append(low, mid...), high...)
 		return myarr
 	}
-
 }
 
 func main() {
