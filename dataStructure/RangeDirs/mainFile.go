@@ -64,7 +64,7 @@ func main1() {
 }
 
 //递归实现文件夹遍历（带层级现实）
-func main() {
+func main2() {
 	path := "/Users/westring/go/src/github.com/Westringliu/learnGo"
 	files := []string{}
 	files, _ = GetALLX(path, files, 0)
@@ -73,7 +73,8 @@ func main() {
 	}
 }
 
-func main2() {
+//栈实现文件夹遍历
+func main() {
 	path := "/Users/westring/go/src/github.com/Westringliu/learnGo"
 	files := []string{}
 
@@ -81,7 +82,7 @@ func main2() {
 	mystack.Push(path)
 	for !mystack.IsEmpty() {
 		path := mystack.Pop().(string)
-		files = append(files, path)
+		//files = append(files, path)
 		read, err := ioutil.ReadDir(path)
 		if err != nil {
 			fmt.Println(err)
@@ -89,7 +90,7 @@ func main2() {
 		for _, fi := range read {
 			if fi.IsDir() {
 				fulldir := path + "/" + fi.Name()
-				//files = append(files, fulldir)
+				files = append(files, fulldir)
 				mystack.Push(fulldir)
 			} else {
 				fulldir := path + "/" + fi.Name()
